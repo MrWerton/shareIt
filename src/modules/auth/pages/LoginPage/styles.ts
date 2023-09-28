@@ -70,7 +70,7 @@ export const FormContainer = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         padding: 2rem;
         background-color: white;
        
@@ -78,7 +78,6 @@ export const FormContainer = styled.div`
 `
 export const Form = styled.form`
         width: 100%;
-       flex: 2;
         max-width: 400px;
        
 
@@ -92,17 +91,29 @@ export const Form = styled.form`
         
         @media (max-width: 760px) {
             height: 1000px;
-            flex: 4;
         }
 
         
 `
 
 export const TitleForm = styled.strong`
-        font-size: 2rem;
+        font-size: 3rem;
         color: #222;
-        margin: 2rem 0;
-        flex: 1;
+        text-align: start;
+        margin-bottom: 1rem;
+        @media (max-width: 760px) {
+            font-size: 2rem;
+            
+        }
+       
+`
+export const DescriptionForm = styled.p`
+        font-size: 1rem;
+        color: #333;
+        margin-bottom: 2rem;
+        @media (max-width: 760px) {
+            font-size: 1rem;
+        }
        
 `
 export const Input = styled.input`
@@ -135,3 +146,5 @@ export const Button = styled.button`
     }
 
 `
+
+

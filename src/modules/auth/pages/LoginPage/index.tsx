@@ -1,5 +1,5 @@
 import { TypeAnimation } from "../../../../shared/components/TyperAnimation"
-import { Button, Container, Form, FormContainer, Header, Input, TitleForm, Welcome } from "./styles"
+import { Button, Container, DescriptionForm, Form, FormContainer, Header, Input, TitleForm, Welcome } from "./styles"
 
 export const LoginPage = () => {
   return (
@@ -14,6 +14,7 @@ export const LoginPage = () => {
       </Welcome>
         <FormContainer>
           <TitleForm>Login</TitleForm>
+          <DescriptionForm>Please enter with yours credentials</DescriptionForm>
           <Form action="">
             <Input placeholder="Seu Email"/>
             <Input placeholder="Sua Senha"/>
