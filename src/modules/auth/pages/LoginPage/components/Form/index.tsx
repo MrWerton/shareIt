@@ -1,4 +1,5 @@
 import { FormEvent, useRef } from 'react'
+import { useNavigate } from 'react-router'
 import { Button } from '../../../../../../shared/components/Button'
 import { Input } from '../../../../../../shared/components/Input'
 import { InputTextValidator } from '../../../../../../shared/validators'
@@ -8,7 +9,7 @@ export const Form = () => {
   
     const emailRef = useRef<HTMLInputElement>(null)
     const passwordRef = useRef<HTMLInputElement>(null)
-
+    const navigate=useNavigate()
 
     const handleLoginFormSubmit = (e: FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
@@ -21,7 +22,7 @@ export const Form = () => {
         const emailIsValid = InputTextValidator.validate(passwordRef.current!);
 
         if(isValid && emailIsValid){
-          console.log({email, password})
+          navigate('/home')
 
         }
 
