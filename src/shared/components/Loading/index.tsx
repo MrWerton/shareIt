@@ -1,4 +1,5 @@
-import { Spinner, SpinnerContainer } from "./styles";
+import { TypeAnimation } from "../TyperAnimation";
+import { SpinnerContainer } from "./styles";
 
 
 export const Loading = () => {
@@ -8,7 +9,7 @@ export const Loading = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <Spinner />
+     <TypeAnimation delay={0} text="Loading..." color="#eee" fontSize="2rem"/>
     </SpinnerContainer>
   );
 };

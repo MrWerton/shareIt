@@ -1,32 +1,35 @@
 import { ReactNode } from 'react'
 import { Navigate } from 'react-router-dom'
 import { Loading } from '../components/Loading'
+import { useAuth } from '../context/auth_context'
 
 interface IProps {
   children: ReactNode
 }
 
 export const PrivateRouter = ({ children }: IProps) => {
-  const token = localStorage.getItem('@share_it:token')
+  const { user } = useAuth()
 
-  if (token === undefined) {
+
+  console.log(user);
+  if (user === undefined) {
     return (
      <Loading/>
         
     )
   }
 
-  return token ? children : <Navigate to='/' replace/>
+  return user ? children : <Navigate to='/' replace/>
 }
 
 export const PublicRouter = ({ children }: IProps) => {
-  const token = localStorage.getItem('@share_it:token')
+  const { user } = useAuth()
 
-  if (token === undefined) {
+  if (user === undefined) {
     return (
       <Loading/>
     )
   }
 
-  return !token ? children : <Navigate to='/home' replace/>
+  return !user ? children : <Navigate to='/home' replace/>
 }
