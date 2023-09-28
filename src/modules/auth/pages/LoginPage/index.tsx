@@ -5,7 +5,7 @@ export const LoginPage = () => {
   return (
     <Container>
         <Header>
-            <h1>Logo</h1>
+            <h1>ShareIt</h1>
         </Header>
         <Welcome/>
         <FormContainer>

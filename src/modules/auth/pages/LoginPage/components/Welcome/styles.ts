@@ -13,7 +13,7 @@ export const WelcomeContainer = styled.div`
         gap: 10px;
         
         padding: 2rem;
-        background-color: #111;
+        background-color: #0d1117;
         @media (max-width: 768px) {
             display: none;
         }
