@@ -1,6 +1,7 @@
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { auth } from '../services/firebase_config';
 
 interface User {
   name: string;
@@ -10,7 +11,7 @@ interface User {
 interface IProps {
   loginGoogle: () => Promise<void>;
   signOut: () => Promise<void>;
-  user: User | null;
+  user: User | null | undefined;
   token: string | null;
 }
 
@@ -22,7 +23,7 @@ const AuthContext = createContext<IProps | undefined>(undefined);
 
 function AuthProvider(props: AuthContextProviderProps) {
   const navigate = useNavigate();
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null | undefined>(undefined);
   const [token, setToken] = useState<string | null>(null);
 
   const loginGoogle = async () => {
@@ -48,7 +49,10 @@ function AuthProvider(props: AuthContextProviderProps) {
 
   const signOut = async () => {
     try {
+      await auth.signOut()
       localStorage.removeItem('@share_it:token');
+      setUser(null);
+      setToken(null)
       navigate('/');
     } catch (error) {
       console.log(error);
@@ -69,6 +73,9 @@ function AuthProvider(props: AuthContextProviderProps) {
           name: displayName,
           id: uid,
         });
+      }else{
+        setUser(null)
+        setToken(null)
       }
     });
 
