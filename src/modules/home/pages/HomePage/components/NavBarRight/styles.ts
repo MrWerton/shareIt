@@ -53,6 +53,7 @@ export const AddPostContainer = styled.div`
 
     button{
         margin-top: auto;
+        
     }
     @media (max-width: 768px) {
      

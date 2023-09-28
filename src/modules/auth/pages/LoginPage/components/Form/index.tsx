@@ -24,6 +24,8 @@ export const Form = () => {
         if(isValid && emailIsValid){
           navigate('/home')
 
+          console.log({email, password})
+
         }
 
     }
