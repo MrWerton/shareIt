@@ -10,10 +10,12 @@ export const Container = styled.nav`
     align-items: center;
     justify-content: start;
     flex-direction: column;
+    
     button{
         margin-top: auto;
     }
     @media (max-width: 768px) {
+        grid-area: nav_left;
         margin: 0;
 
         padding: 10px;
@@ -63,4 +65,9 @@ export const Link = styled.div`
 
 
     }
+`
+
+export const Logo = styled.h1`
+    margin-top: 8px;
+    font-size: 1.4rem;
 `

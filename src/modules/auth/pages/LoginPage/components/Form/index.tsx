@@ -2,7 +2,6 @@ import { FormEvent, useRef } from 'react'
 import { useNavigate } from 'react-router'
 import { Button } from '../../../../../../shared/components/Button'
 import { Input } from '../../../../../../shared/components/Input'
-import { InputTextValidator } from '../../../../../../shared/validators'
 import { FormContainer, GoogleButton } from './styles'
 
 export const Form = () => {
@@ -11,6 +10,8 @@ export const Form = () => {
     const passwordRef = useRef<HTMLInputElement>(null)
     const navigate=useNavigate()
 
+   
+
     const handleLoginFormSubmit = (e: FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
 
@@ -18,15 +19,12 @@ export const Form = () => {
         const email = emailRef.current!.value;
         const password = passwordRef.current!.value;
        
-        const isValid =  InputTextValidator.validate(emailRef.current!);
-        const emailIsValid = InputTextValidator.validate(passwordRef.current!);
-
-        if(isValid && emailIsValid){
-          navigate('/home')
+        navigate('/home')
+       
 
           console.log({email, password})
 
-        }
+        
 
     }
  

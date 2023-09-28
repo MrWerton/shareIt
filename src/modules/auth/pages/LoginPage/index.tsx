@@ -1,7 +1,9 @@
-import { Form } from "./components/Form"
+import { useAuth } from "../../../../shared/context/auth_context"
+import { GoogleButton } from "./components/Form/styles"
 import { Welcome } from "./components/Welcome"
-import { Container, DescriptionForm, FormContainer, Header, TitleForm } from "./styles"
+import { Container, FormContainer, Header, TitleForm } from "./styles"
 export const LoginPage = () => {
+  const {loginGoogle} = useAuth()
   return (
     <Container>
         <Header>
@@ -9,9 +11,9 @@ export const LoginPage = () => {
         </Header>
         <Welcome/>
         <FormContainer>
-          <TitleForm>Login</TitleForm>
-          <DescriptionForm>Please enter with yours credentials</DescriptionForm>
-         <Form/>
+          <TitleForm>Get Started</TitleForm>
+          <GoogleButton onClick={loginGoogle}>Login with Google</GoogleButton>
+
         </FormContainer>
    
     </Container>

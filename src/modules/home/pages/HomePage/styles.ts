@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.main`
     display: grid;
     grid-template-columns: 100px 6fr 3fr;
-    
+    grid-template-areas: none;
 
     width: 100vw;
     height: 100vh;
@@ -11,13 +11,13 @@ export const Container = styled.main`
     background-color: #0d1117;
     
     @media (max-width: 768px) {
-        display: flex;
         margin: 0;
         padding: 0;
-        flex-direction: column-reverse;
-        align-items: flex-start;
-        align-items: flex-start;
-        overflow-y: auto;
+        overflow-y: scroll;
+        grid-template-areas: 'nav_right nav_right nav_right'
+                    'list_post list_post list_post'
+                    'nav_left nav_left nav_left';
+       
 
     }
 

@@ -1,9 +1,10 @@
 import { collection, getDocs } from 'firebase/firestore'
 import { useEffect } from 'react'
 import {
-  RouterProvider
+  BrowserRouter
 } from "react-router-dom"
-import { routes } from './shared/routes'
+import { AuthProvider } from './shared/context/auth_context'
+import { AppRoutes } from './shared/routes'
 import { db } from './shared/services/firebase_config'
 function App() {
 
@@ -20,7 +21,11 @@ function App() {
   }, [])
 
   return (
-    <RouterProvider router={routes} />
+    <BrowserRouter>
+    <AuthProvider>
+      <AppRoutes/>
+    </AuthProvider>
+    </BrowserRouter>
   )
 }
 
