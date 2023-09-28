@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 import {
   RouterProvider
 } from "react-router-dom"
-import './App.css'
 import { routes } from './shared/routes'
 import { db } from './shared/services/firebase_config'
 function App() {
