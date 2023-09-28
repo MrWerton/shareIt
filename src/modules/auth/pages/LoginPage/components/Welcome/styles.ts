@@ -15,6 +15,6 @@ export const WelcomeContainer = styled.div`
         padding: 2rem;
         background-color: #0d1117;
         @media (max-width: 768px) {
-            display: none;
+           height: auto;
         }
 `

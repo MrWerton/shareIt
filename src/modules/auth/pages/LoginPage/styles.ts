@@ -9,7 +9,7 @@ export const Container = styled.main`
 
     @media (max-width: 768px) {
         grid-template-columns: 1fr;
-        grid-template-rows: 80px 1fr;
+        grid-template-rows: 80px 1fr 1fr;
 
      
         overflow-y: auto;
@@ -30,13 +30,11 @@ export const Header = styled.header`
         left: 0;
         top: 0;
         position: sticky;
-        height: 70px;
-        background-color: white;
+        background-color: #0d1117;
 
-        color: #111;
-  
 
-        border-bottom: 2px solid #eee;
+        color: #eee;
+
      
     }
 
@@ -51,7 +49,7 @@ export const FormContainer = styled.div`
        
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         padding: 2rem;
         background-color: white;
@@ -61,7 +59,7 @@ export const FormContainer = styled.div`
 
 
 export const TitleForm = styled.strong`
-        font-size: 3rem;
+        font-size: 2rem;
         color: #222;
         text-align: start;
         margin-bottom: 1rem;
@@ -72,7 +70,7 @@ export const TitleForm = styled.strong`
        
 `
 export const DescriptionForm = styled.p`
-        font-size: 1rem;
+        font-size: 3rem;
         color: #333;
         margin-bottom: 2rem;
         @media (max-width: 768px) {

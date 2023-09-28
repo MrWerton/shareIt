@@ -1,4 +1,4 @@
-import { BodyPost, Container, Content, Counter, Description, Down, HeaderPost, Profile, ProfileLocalization, ProfileName, Title, Up, VoteOption } from './styles';
+import { BodyPost, Container, Content, Counter, Description, Down, HeaderPost, Profile, ProfileLocalization, ProfileName, Tag, Up, VoteOption } from './styles';
 
 export const Post = () => {
     return (
@@ -7,12 +7,12 @@ export const Post = () => {
                 <HeaderPost>
                     <Profile>
                         <ProfileName>Werton</ProfileName>
-                    <ProfileLocalization>Teresina-PI</ProfileLocalization>
+                        <ProfileLocalization>ShareIted from Teresina-PI</ProfileLocalization>
                     </Profile>
                 </HeaderPost>
                 <BodyPost>
-                    <Title>Hello</Title>
-                <Description>Lorem Ipson Indolor</Description>
+                    <Description>Lorem Ipson Indolor</Description>
+                    <Tag>#Hello #Hello </Tag>
                 </BodyPost>
              </Content>
                 <VoteOption>

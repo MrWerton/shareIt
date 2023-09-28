@@ -32,13 +32,20 @@ export const VoteOption = styled.div`
 `
 export const BodyPost = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
 `
 
 export const ProfileName = styled.strong`
 `
 
-export const ProfileLocalization = styled.strong`
+export const ProfileLocalization = styled.p`
+  font-size: 1rem;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 
 `
 export const Content = styled.div`
@@ -47,18 +54,17 @@ export const Content = styled.div`
   flex-direction: column;
 `
 
-export const Title = styled.strong`
-  font-size: 1rem;
+export const Tag = styled.p`
+  font-size: .8rem;
+  color: #444;
+
 `
 
 export const Description = styled.strong`
   font-size: 1rem;
 
 `
-export const Tag = styled.strong`
-  
 
-`
 
 export const Counter = styled.strong`
   

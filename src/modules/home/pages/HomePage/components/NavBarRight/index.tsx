@@ -2,10 +2,12 @@ import { useRef } from 'react'
 import { Button } from '../../../../../../shared/components/Button'
 import { Input } from '../../../../../../shared/components/Input'
 import { TypeAnimation } from '../../../../../../shared/components/TyperAnimation'
+import { useAuth } from '../../../../../../shared/context/auth_context'
 import { AddPostContainer, Container, ProfileInfo } from './styles'
 
 export const NavBarRight = () => {
 
+  const {user} = useAuth()
 
   const tagRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLTextAreaElement>(null);
@@ -16,7 +18,7 @@ export const NavBarRight = () => {
   return (
     <Container>
       <ProfileInfo>
-        <TypeAnimation text='Hello, Werton!' color='#eee' fontSize='2rem'/>
+        <TypeAnimation delay={400} text={`Hello, ${user?.name}!`} color='#eee' fontSize='2rem'/>
       </ProfileInfo>
        <AddPostContainer>
         <h2>Share a New Think</h2>

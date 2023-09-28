@@ -11,6 +11,7 @@ export const Container = styled.nav`
     flex-direction: column;
     box-shadow: -2px 0px 0px #eee;
     @media (max-width: 768px) {
+        grid-area: nav_right;
      
         padding: 0;
         height: auto;
