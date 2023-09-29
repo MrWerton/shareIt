@@ -7,8 +7,8 @@ interface ButtonProps{
 }
 export const Button = ({onClick, title,isLoading, type = 'button'}: ButtonProps) => {
   return (
-    <ButtonContainer type={type} onClick={onClick}>
-        {isLoading?"Loading...": title}
+    <ButtonContainer disabled={isLoading} type={type} onClick={onClick}>
+        {isLoading?"...": title}
     </ButtonContainer>
   )
 }

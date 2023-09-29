@@ -37,7 +37,6 @@ export const Container = styled.div`
 
 
         overflow: visible;
-        margin-bottom: 5rem;
 
     }
 `;
@@ -48,6 +47,7 @@ export const Tabs = styled.div`
   position: sticky;
   top: 0;
   padding: 0;
+  z-index: 111;
   
   justify-content: center;
   gap: 1rem;
@@ -60,9 +60,11 @@ export const Tab = styled.strong<TabProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   position: relative; 
   
   color: #222;
+  background-color: white;
 
   flex: 1;
 

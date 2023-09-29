@@ -51,6 +51,10 @@ export const AddPostContainer = styled.div`
         font-size: 1.3rem;
      }
 
+     textarea{
+        padding: 1rem;
+        height: 150px;
+     }
      button{
         width: auto;
         margin-left: auto;

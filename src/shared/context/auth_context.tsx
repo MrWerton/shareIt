@@ -1,6 +1,8 @@
+import { FirebaseError } from 'firebase/app';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { auth } from '../services/firebase_config';
 
 interface User {
@@ -42,8 +44,9 @@ function AuthProvider(props: AuthContextProviderProps) {
         window.alert('Seu perfil deve possuir foto e nome');
       }
       navigate('/home');
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      const err = error as FirebaseError;
+      toast(err.code, {type: 'error'})
     }
   }
 
@@ -55,7 +58,8 @@ function AuthProvider(props: AuthContextProviderProps) {
       setToken(null)
       navigate('/');
     } catch (error) {
-      console.log(error);
+      const err = error as FirebaseError;
+      toast(err.code, {type: 'error'})
     }
   }
 
@@ -66,11 +70,9 @@ function AuthProvider(props: AuthContextProviderProps) {
     const unsubscribe = getAuth().onAuthStateChanged((authUser) => {
       if (authUser) {
         const { displayName, uid } = authUser;
-        if (!displayName ) {
-          throw new Error('Your profile not has a name.');
-        }
+        
         setUser({
-          name: displayName,
+          name: displayName ?? 'Cliclano',
           id: uid,
         });
       }else{

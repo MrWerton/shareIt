@@ -15,10 +15,7 @@ export const ListPosts = ({posts}: ListPostsProps) => {
     :<Center>
         <TypeAnimation delay={0} text="No posts? No problem! Share your thoughts now..." />
     </Center>
-      
       }
-
-      
     </Container>
   )
 }
