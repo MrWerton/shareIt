@@ -7,5 +7,6 @@ export const SpinnerContainer = styled(motion.div)`
   align-items: center;
   background-color: #111;
   height: 100vh;
+  width: 100vw;
 `;
 

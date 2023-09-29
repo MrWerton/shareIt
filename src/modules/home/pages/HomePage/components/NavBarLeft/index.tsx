@@ -9,6 +9,7 @@ export const NavBarLeft = () => {
     <Container>
        <Logo>ShareIt</Logo>
        <Link><BiHomeAlt/></Link>
+       
        <Button title='Logout' onClick={signOut}/>
     </Container>
   )

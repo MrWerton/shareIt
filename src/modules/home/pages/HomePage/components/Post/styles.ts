@@ -1,20 +1,22 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    padding: 1rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: row;
     align-items: start;
     width: 100%;
-    border-radius: 10px;
     background-color: white;
-    box-shadow: 0px 2px 1px #eee;
 
+    &:not(&:last-child){
+      border-bottom: 1px solid #aaa;
+    }
 
 `;
 
 export const HeaderPost = styled.div`
   width: 100%;
+  
   padding: 1rem 0;
 
 `

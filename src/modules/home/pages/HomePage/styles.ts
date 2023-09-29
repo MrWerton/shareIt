@@ -11,12 +11,27 @@ export const Container = styled.main`
     background-color: #0d1117;
     
     @media (max-width: 768px) {
+        background-color: white;
         margin: 0;
         padding: 0;
         overflow-y: scroll;
+        background-color: white;
+        grid-template-rows: 200px 4fr;
+
         grid-template-areas: 'nav_right nav_right nav_right'
                     'list_post list_post list_post'
+                    'list_post list_post list_post'
                     'nav_left nav_left nav_left';
+        
+                    &::-webkit-scrollbar{
+        width: 0
+            };
+            &::-webkit-scrollbar-track {
+              width: 0
+            };
+            &::-webkit-scrollbar-thumb {
+           display: none;
+        };
        
 
     }
