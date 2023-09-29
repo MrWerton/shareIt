@@ -30,7 +30,7 @@ export const Post = ({post}: PostProps) => {
   
 
     const iAmAuthor = post.author.id === user!.id;
-    const isLocked = iAmAuthor || !post.closed || !post.active
+    const isLocked = iAmAuthor || post.closed || !post.active
     return (
         <Container>
               <VoteOption>

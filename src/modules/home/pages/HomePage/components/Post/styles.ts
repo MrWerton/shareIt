@@ -135,7 +135,9 @@ export const Counter = styled.strong<CounterProps>`
 const ButtonVote = styled.button`
  background-color: transparent;
   border: 0;
+  font-size: 1rem;
   padding: 1rem;
+  font-weight: bold;
   cursor: pointer;
 
 `

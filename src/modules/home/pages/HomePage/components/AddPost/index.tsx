@@ -81,7 +81,7 @@ import { AddPostContainer } from './styles';
   return (
     <AddPostContainer>
       <h2>Share a New Think</h2>
-      <textarea required ref={contentRef} placeholder="What's you think?" name="" id=""></textarea>
+      <textarea required ref={contentRef} placeholder="What're you thinking?" name="" id=""></textarea>
       <Button isLoading={loading} onClick={addNewThink} title='Share'/>
     </AddPostContainer>
   );
