@@ -1,12 +1,13 @@
+import { FirebaseError } from 'firebase/app'
 import { collection, onSnapshot, query, where } from 'firebase/firestore'
 import { useCallback, useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 import { Spinner } from '../../../../../../shared/components/Spinner'
 import { useAuth } from '../../../../../../shared/context/auth_context'
 import { db } from '../../../../../../shared/services/firebase_config'
 import { Post } from '../../shared/interfaces/Post'
 import { ListPosts } from '../ListPosts'
 import { Center, Container } from "./styles"
-
 export const MyPosts = () => {
   const [posts, setPosts] = useState<Post[]>([])
   const [loading, setLoading] = useState(true)
@@ -30,11 +31,10 @@ export const MyPosts = () => {
         setPosts(postData)
       })
     } catch (error) {
-      console.log(error)
+      const err = error as FirebaseError;
+      toast(err.code, {type: 'error'})
     } finally {
-      
-        setLoading(false)
-      
+      setLoading(false)
     }
   }, [user])
 
@@ -47,15 +47,12 @@ export const MyPosts = () => {
   }, [getAllPosts])
   return (
     <Container>
-     
-     <Center>
-       {loading?
-          <Spinner/>
-      
-      : <ListPosts posts={posts} />}
-     </Center>
-
-      
-    </Container>
+    {loading?
+    <Center>
+      <Spinner/>
+    </Center>
+    
+    : <ListPosts posts={posts} />}
+  </Container>
   )
 }

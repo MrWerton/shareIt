@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore"
 import { User } from "./User"
 
 export interface Post{
@@ -5,7 +6,9 @@ export interface Post{
     tags: string[],
     id?: string,
     active: boolean,
-    author: User
-    createdAt: Date
+    author: User,
+    closed: boolean,
+    votes: number,
+    createdAt: Timestamp
     
   }

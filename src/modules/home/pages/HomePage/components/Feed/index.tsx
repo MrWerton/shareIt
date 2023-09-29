@@ -1,11 +1,12 @@
-import { collection, onSnapshot } from 'firebase/firestore'
+import { FirebaseError } from 'firebase/app'
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { useCallback, useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 import { Spinner } from '../../../../../../shared/components/Spinner'
 import { db } from '../../../../../../shared/services/firebase_config'
 import { Post } from '../../shared/interfaces/Post'
 import { ListPosts } from '../ListPosts'
 import { Center, Container } from "./styles"
-
 export const Feed = () => {
   const [posts, setPosts] = useState<Post[]>([])
   const [loading, setLoading] = useState(true)
@@ -14,7 +15,7 @@ export const Feed = () => {
     const refPosts = collection(db, 'posts')
 
     try {
-      onSnapshot(refPosts, (doc) => {
+      onSnapshot(query(refPosts, orderBy('createdAt', 'desc')), (doc) => {
         const postData = doc.docs.map((doc) => {
           const posts = doc.data() as Post
           const id = doc.id
@@ -28,7 +29,8 @@ export const Feed = () => {
         setPosts(postData)
       })
     } catch (error) {
-      console.log(error)
+      const err = error as FirebaseError;
+      toast(err.code, {type: 'error'})
     } finally {
       setLoading(false)
     }

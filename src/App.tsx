@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import {
   BrowserRouter
 } from "react-router-dom"
+import { ToastContainer } from 'react-toastify'
 import { AuthProvider } from './shared/context/auth_context'
 import { AppRoutes } from './shared/routes'
 import { db } from './shared/services/firebase_config'
@@ -25,6 +26,7 @@ function App() {
     <AuthProvider>
       <AppRoutes/>
     </AuthProvider>
+    <ToastContainer />
     </BrowserRouter>
   )
 }

@@ -1,11 +1,13 @@
-import { addDoc, collection } from 'firebase/firestore';
+import { FirebaseError } from 'firebase/app';
+import { Timestamp, addDoc, collection } from 'firebase/firestore';
 import { memo, useRef, useState } from 'react';
+import { toast } from 'react-toastify';
 import { Button } from '../../../../../../shared/components/Button';
 import { useAuth } from '../../../../../../shared/context/auth_context';
 import { db } from '../../../../../../shared/services/firebase_config';
 import { Address } from '../../shared/interfaces/Address';
 import { Post } from '../../shared/interfaces/Post';
-import { getHashtags } from '../../shared/utils';
+import { getHashtags, getTextWithoutHashtags } from '../../shared/utils';
 import { AddPostContainer } from './styles';
 
 
@@ -15,32 +17,31 @@ import { AddPostContainer } from './styles';
   const {user} = useAuth()
 
   const addNewThink = async () => {
+    setLoading(true)
+
     try {
       const content = contentRef.current?.value;
 
       if (content) {
         const hashtags = getHashtags(content);
+        const contentWithoutTag = getTextWithoutHashtags(content);
         const address = await getLocalization();
-        SavePostInFirestore({content: content, author:{address: address, name: user!.name, id: user!.id}, active: false, tags: hashtags, createdAt: new Date()})
+        SavePostInFirestore({content: contentWithoutTag, author:{address: address, name: user!.name, id: user!.id}, active: false, tags: hashtags, createdAt: Timestamp.now(), votes: 0, closed: false})
       }
-    } catch (error) {
-      console.error(error);
+    }catch (error) {
+      const err = error as FirebaseError;
+      toast(err.code, {type: 'error'})
+    } finally {
+      setLoading(false)
     }
   };
 
 
-  async function SavePostInFirestore(data: Post){
-    setLoading(true)
-    try {
-      const postRef = collection(db, 'posts')
-    
+  
 
+  async function SavePostInFirestore(data: Post){
+      const postRef = collection(db, 'posts')
       await addDoc(postRef, data)
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setLoading(false)
-    }
   }
 
 
@@ -60,7 +61,7 @@ import { AddPostContainer } from './styles';
           const country = address[address.length - 1].trim();
           return { city, country };
         } else {
-          throw new Error("Dados de localização não encontrados");
+          throw new Error("Localization data not is founded");
         }
       } else {
         throw new Error("Geolocation not supported");
