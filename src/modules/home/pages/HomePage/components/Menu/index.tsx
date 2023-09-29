@@ -80,7 +80,7 @@ const iAmAuthor = post.author.id === user!.id;
       <MenuList open={menuOpen}>
        {iAmAuthor && <Item  disabled={isSending} onClick={handlerRemovePost}><BiTrash/> Delete</Item>}
         {!iAmAuthor && <Item disabled={isSending} onClick={handlerReportPost}><AiOutlineAlert/>Report</Item>}
-        {!post.closed && <Item disabled={isSending} onClick={handlerClosePost}><GrClose/>Close</Item>}
+        {!post.closed && iAmAuthor && <Item disabled={isSending} onClick={handlerClosePost}><GrClose/>Close</Item>}
       </MenuList>
     </MenuContainer>
   );
