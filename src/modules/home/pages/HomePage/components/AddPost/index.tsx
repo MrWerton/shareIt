@@ -26,7 +26,7 @@ import { AddPostContainer } from './styles';
         const hashtags = getHashtags(content);
         const contentWithoutTag = getTextWithoutHashtags(content);
         const address = await getLocalization();
-        SavePostInFirestore({content: contentWithoutTag, author:{address: address, name: user!.name, id: user!.id}, active: false, tags: hashtags, createdAt: Timestamp.now(), votes: 0, closed: false})
+        SavePostInFirestore({content: contentWithoutTag, author:{address: address, name: user!.name, id: user!.id}, active: true, tags: hashtags, createdAt: Timestamp.now(), votes: 0, closed: false})
       }
     }catch (error) {
       const err = error as FirebaseError;
