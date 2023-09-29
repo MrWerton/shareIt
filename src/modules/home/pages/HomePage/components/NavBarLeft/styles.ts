@@ -8,32 +8,31 @@ export const Container = styled.nav`
     display: flex;
     padding: 1rem;
     align-items: center;
-    justify-content: start;
+    justify-content: space-between;
     flex-direction: column;
     
-    button{
-        margin-top: auto;
-    }
+
     @media (max-width: 768px) {
         grid-area: nav_left;
         margin: 0;
 
-        padding: 10px;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         height: auto;
         flex-direction: row;
-        position: absolute;
+        position: fixed;
         bottom: 0;
+        z-index: 2222;
         left: 0;
+        padding:0 1rem .8rem;
         right: 0;
         align-items: center;
         justify-content: space-between;
 
 
-  button{
-    width: 70px;
-  }
+        button{
+            width: 70px;
+        }
 
  }
 
@@ -42,7 +41,7 @@ export const Container = styled.nav`
 export const Link = styled.div`
     width: 60px;
     border-radius: 10px;
-    margin-top: 5rem;
+    
     height: 60px;
     background-color: #0d11a1;
     display: flex;
@@ -58,7 +57,7 @@ export const Link = styled.div`
      margin: 0;
      position: fixed;
      
-     bottom: 30px;
+     bottom: 36px;
      border: 2px solid white;
      border-radius: 30px;
      left: calc(50% - 30px);

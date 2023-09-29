@@ -1,18 +1,21 @@
+import { Post as IPost } from '../../shared/interfaces/Post';
 import { BodyPost, Container, Content, Counter, Description, Down, HeaderPost, Profile, ProfileLocalization, ProfileName, Tag, Up, VoteOption } from './styles';
-
-export const Post = () => {
+interface PostProps{
+    post: IPost
+}
+export const Post = ({post}: PostProps) => {
     return (
         <Container>
             <Content>
                 <HeaderPost>
                     <Profile>
-                        <ProfileName>Werton</ProfileName>
-                        <ProfileLocalization>ShareIted from Teresina-PI</ProfileLocalization>
+                        <ProfileName>{post.author.name}</ProfileName>
+                        <ProfileLocalization>ShareIted from {post.author.address.city} - {post.author.address.country}</ProfileLocalization>
                     </Profile>
                 </HeaderPost>
                 <BodyPost>
-                    <Description>Lorem Ipson Indolor</Description>
-                    <Tag>#Hello #Hello </Tag>
+                    <Description>{post.content}</Description>
+                    {post.tags.map(item=><Tag key={item}>{item} </Tag>)}
                 </BodyPost>
              </Content>
                 <VoteOption>
