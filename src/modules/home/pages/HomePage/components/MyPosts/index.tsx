@@ -1,6 +1,6 @@
 import { collection, onSnapshot, query, where } from 'firebase/firestore'
 import { useCallback, useEffect, useState } from 'react'
-import { TypeAnimation } from '../../../../../../shared/components/TyperAnimation'
+import { Spinner } from '../../../../../../shared/components/Spinner'
 import { useAuth } from '../../../../../../shared/context/auth_context'
 import { db } from '../../../../../../shared/services/firebase_config'
 import { Post } from '../../shared/interfaces/Post'
@@ -32,9 +32,11 @@ export const MyPosts = () => {
     } catch (error) {
       console.log(error)
     } finally {
-      setLoading(false)
+      
+        setLoading(false)
+      
     }
-  }, [])
+  }, [user])
 
   useEffect(() => {
     getAllPosts()
@@ -48,7 +50,7 @@ export const MyPosts = () => {
      
      <Center>
        {loading?
-          <TypeAnimation delay={0} text='fetching posts...'/>
+          <Spinner/>
       
       : <ListPosts posts={posts} />}
      </Center>

@@ -1,6 +1,6 @@
 import { collection, onSnapshot } from 'firebase/firestore'
 import { useCallback, useEffect, useState } from 'react'
-import { TypeAnimation } from '../../../../../../shared/components/TyperAnimation'
+import { Spinner } from '../../../../../../shared/components/Spinner'
 import { db } from '../../../../../../shared/services/firebase_config'
 import { Post } from '../../shared/interfaces/Post'
 import { ListPosts } from '../ListPosts'
@@ -45,7 +45,7 @@ export const Feed = () => {
     <Container>
       {loading?
       <Center>
-        <TypeAnimation delay={0} text='fetching posts...'/>
+        <Spinner/>
       </Center>
       
       : <ListPosts posts={posts} />}

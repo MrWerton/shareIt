@@ -1,16 +1,16 @@
-import { TypeAnimation } from "../TyperAnimation";
 import { SpinnerContainer } from "./styles";
 
 
 export const Loading = () => {
   return (
     <SpinnerContainer
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      animate={{
+        opacity: [0, 1],
+      }}
     >
-     <TypeAnimation delay={0} text="Loading..." color="#eee" fontSize="2rem"/>
+      <h1>ShareIt!</h1>
     </SpinnerContainer>
   );
 };
+
 
