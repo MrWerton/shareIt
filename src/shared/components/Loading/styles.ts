@@ -5,7 +5,8 @@ export const SpinnerContainer = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #111;
+  background-color: white;
+  
   height: 100vh;
   width: 100vw;
 `;

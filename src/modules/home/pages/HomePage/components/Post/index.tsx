@@ -10,7 +10,7 @@ export const Post = ({post}: PostProps) => {
                 <HeaderPost>
                     <Profile>
                         <ProfileName>{post.author.name}</ProfileName>
-                        <ProfileLocalization>ShareIted from {post.author.address.city} - {post.author.address.country}</ProfileLocalization>
+                        <ProfileLocalization>Shared from {post.author.address.city} - {post.author.address.country}</ProfileLocalization>
                     </Profile>
                 </HeaderPost>
                 <BodyPost>
