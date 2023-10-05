@@ -25,9 +25,8 @@ export function getHashtags(text: string) {
 
 
 
-export function getTimeSincePublication(timestamp: number): string {
+export function getTimeSincePublication(postDate: Date): string {
   const currentDate = new Date();
-  const postDate = new Date(timestamp * 1000);
 
   const hoursAgo = differenceInHours(currentDate, postDate);
   const minutesAgo = differenceInMinutes(currentDate, postDate);

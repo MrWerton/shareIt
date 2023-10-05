@@ -10,7 +10,6 @@ export const Container = styled.div`
     padding: .3rem 1rem;
     display: flex;
     flex-direction: row;
-    align-items: center;
     width: 100%;
     min-height: 200px;
 
@@ -20,9 +19,9 @@ export const Container = styled.div`
       border-bottom: 1px solid #aaa;
     }
 
-    @media (max-width: 720px) {
-      padding: 0;
-      padding-right: 10px;
+    @media (min-width: 720px) {
+     width: 50%;
+     border: 1px solid #aaa;
     }
 
 `;
@@ -41,9 +40,8 @@ export const Profile = styled.div`
 `
 export const VoteOption = styled.div`
   display: flex;
-  padding: 1rem;
+  padding:  .4rem 1rem;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
 `
 export const BodyPost = styled.div<InactiveProps>`

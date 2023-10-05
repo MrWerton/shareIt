@@ -1,54 +1,33 @@
-import { doc, increment, updateDoc } from 'firebase/firestore';
-import { useAuth } from '../../../../../../shared/context/auth_context';
-import { db } from '../../../../../../shared/services/firebase_config';
 import { Post as IPost } from '../../shared/interfaces/Post';
-import { getTimeSincePublication } from '../../shared/utils';
-import { Menu } from '../Menu';
-import { BodyPost, Container, Content, Counter, Description, Down, Footer, HeaderPost, Profile, ProfileLocalization, ProfileName, Tag, TimerPublication, Up, VoteOption } from './styles';
+import { BodyPost, Container, Content, Counter, Description, Down, Footer, HeaderPost, Profile, ProfileLocalization, ProfileName, Tag, Up, VoteOption } from './styles';
 interface PostProps{
     post: IPost
+    handleUpVote: (id: string) => void;
+    handleDownVote: (id: string) => void
 }
-export const Post = ({post}: PostProps) => {
-    const {user} = useAuth()
+export const Post = ({post,handleDownVote, handleUpVote}: PostProps) => {
 
-    const handleUpVote=async()=>{
-        try {
-            const ref = doc(db, 'posts', post.id!);
-            await updateDoc(ref, {votes: increment(1)})
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    const handleDownVote=async()=>{
-        try {
-            const ref = doc(db, 'posts', post.id!);
-            await updateDoc(ref, {votes: increment(-1)})
-        } catch (error) {
-            console.log(error)
-        }
-    }
+  
   
 
-    const iAmAuthor = post.author.id === user!.id;
-    const isLocked = iAmAuthor || post.closed || !post.active
+    const isLocked =  post.closed || !post.active
     return (
         <Container>
               <VoteOption>
-                    <Up disabled={isLocked} onClick={handleUpVote}>^</Up>
+                    <Up disabled={isLocked} onClick={()=>handleUpVote(post.id)}>^</Up>
                     <Counter votes={post.votes}>{post.votes}</Counter>
-                    <Down disabled={isLocked} onClick={handleDownVote}>v</Down>
+                    <Down disabled={isLocked} onClick={()=>handleDownVote(post.id)}>v</Down>
                 </VoteOption>
             <Content>
                 <HeaderPost>
                     <Profile>
                         <ProfileName>{post.author.name}   
-                        <Menu post={post}/>
+                       
                         </ProfileName>
-                        <ProfileLocalization>Shared from {post.author.address.city} - {post.author.address.country}</ProfileLocalization>
+                        <ProfileLocalization>Shared from {post.author.city}</ProfileLocalization>
                     </Profile>
-                    <TimerPublication>{getTimeSincePublication(post.createdAt.seconds)}</TimerPublication>
                 </HeaderPost>
-                <BodyPost isInactive={!post.active && !iAmAuthor}>
+                <BodyPost isInactive={!post.active}>
                     <Description >{post.content}</Description>
                    <Footer>
                     <span>
