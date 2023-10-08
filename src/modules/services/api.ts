@@ -1,5 +1,5 @@
 import { AxiosError, AxiosInstance } from 'axios';
-import { Post } from '../home/pages/HomePage/shared/interfaces/Post';
+import { Post } from '../home/interfaces/Post';
 
 export class ApiService  {
 

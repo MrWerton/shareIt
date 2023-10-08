@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { GrClose, GrMore } from 'react-icons/gr';
 import { toast } from 'react-toastify';
 import { db } from '../../../../../../shared/services/firebase_config';
-import { Post } from '../../shared/interfaces/Post';
+import { Post } from '../../../../interfaces/Post';
 import { ButtonTitle, Icon, Item, MenuContainer, MenuList } from "./styles";
 
 interface MenuProps{

@@ -1,4 +1,4 @@
-import { Post } from "../shared/interfaces/Post"
+import { Post } from "../../../interfaces/Post"
 
 interface PostState {
   posts: Post[]

@@ -4,8 +4,8 @@ import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import { Button } from '../../../../../../shared/components/Button';
 import { Input } from '../../../../../../shared/components/Input';
-import { Post } from '../../shared/interfaces/Post';
-import { getHashtags, getTextWithoutHashtags } from '../../shared/utils';
+import { Post } from '../../../../interfaces/Post';
+import { getHashtags, getTextWithoutHashtags } from '../../../../utils';
 
 import { AddPostContainer } from './styles';
 

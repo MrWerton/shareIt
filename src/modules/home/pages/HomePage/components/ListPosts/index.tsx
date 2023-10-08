@@ -1,5 +1,5 @@
 import { TypeAnimation } from '../../../../../../shared/components/TyperAnimation'
-import { Post as IPost } from '../../shared/interfaces/Post'
+import { Post as IPost } from '../../../../interfaces/Post'
 import { Post } from '../Post'
 import { Center, Container } from "./styles"
 

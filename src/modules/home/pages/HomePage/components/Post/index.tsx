@@ -1,4 +1,4 @@
-import { Post as IPost } from '../../shared/interfaces/Post';
+import { Post as IPost } from '../../../../interfaces/Post';
 import { BodyPost, Container, Content, Counter, Description, Down, Footer, HeaderPost, Profile, ProfileLocalization, ProfileName, Tag, Up, VoteOption } from './styles';
 interface PostProps{
     post: IPost
@@ -6,9 +6,6 @@ interface PostProps{
     handleDownVote: (id: string) => void
 }
 export const Post = ({post,handleDownVote, handleUpVote}: PostProps) => {
-
-  
-  
 
     const isLocked =  post.closed || !post.active
     return (
