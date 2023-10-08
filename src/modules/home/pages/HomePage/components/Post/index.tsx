@@ -1,19 +1,21 @@
+import { usePost } from '../../../../../../shared/contexts/PostContext';
 import { Post as IPost } from '../../../../interfaces/Post';
 import { BodyPost, Container, Content, Counter, Description, Down, Footer, HeaderPost, Profile, ProfileLocalization, ProfileName, Tag, Up, VoteOption } from './styles';
 interface PostProps{
     post: IPost
-    handleUpVote: (id: string) => void;
-    handleDownVote: (id: string) => void
+ 
 }
-export const Post = ({post,handleDownVote, handleUpVote}: PostProps) => {
+export const Post = ({post}: PostProps) => {
+    const {downVote, upVote} = usePost()
+
 
     const isLocked =  post.closed || !post.active
     return (
         <Container>
               <VoteOption>
-                    <Up disabled={isLocked} onClick={()=>handleUpVote(post.id)}>^</Up>
+                    <Up disabled={isLocked} onClick={()=>downVote(post.id)}>^</Up>
                     <Counter votes={post.votes}>{post.votes}</Counter>
-                    <Down disabled={isLocked} onClick={()=>handleDownVote(post.id)}>v</Down>
+                    <Down disabled={isLocked} onClick={()=>upVote(post.id)}>v</Down>
                 </VoteOption>
             <Content>
                 <HeaderPost>

@@ -1,27 +1,25 @@
-import { FirebaseError } from 'firebase/app';
 import { useRef, useState } from 'react';
-import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import { Button } from '../../../../../../shared/components/Button';
 import { Input } from '../../../../../../shared/components/Input';
 import { Post } from '../../../../interfaces/Post';
 import { getHashtags, getTextWithoutHashtags } from '../../../../utils';
 
+import { usePost } from '../../../../../../shared/contexts/PostContext';
 import { AddPostContainer } from './styles';
 
-interface AddPostFormProps{
-  onAdd: (data: Post) => void
-}
- export const AddPostForm = ({onAdd}: AddPostFormProps) => {
+
+ export const AddPostForm = () => {
   const contentRef = useRef<HTMLTextAreaElement>(null);
   const userNameRef = useRef<HTMLInputElement>(null);
   const cityRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false)
+  const {addPost} = usePost()
 
   const addNewThink = async () => {
     setLoading(true)
 
-    try {
+   
       const content = contentRef.current?.value;
       const userName = userNameRef.current?.value;
       const city = cityRef.current?.value;
@@ -30,15 +28,10 @@ interface AddPostFormProps{
         const hashtags = getHashtags(content);
         const contentWithoutTag = getTextWithoutHashtags(content);
         const post: Post = {id:uuidv4(),  content: contentWithoutTag, author:{city: city, name: userName, id: uuidv4() }, active: true, tags: hashtags, createdAt: new Date(), votes: 0, closed: false}
-        onAdd(post)
+        addPost(post)
       }
-    }catch (error) {
-      const err = error as FirebaseError;
-      toast(err.code, {type: 'error'})
-    } finally {
-      setLoading(false)
     }
-  };
+  
 
 
   
