@@ -13,9 +13,9 @@ export const Post = ({post}: PostProps) => {
     return (
         <Container>
               <VoteOption>
-                    <Up disabled={isLocked} onClick={()=>downVote(post.id)}>^</Up>
+                    <Up disabled={isLocked} onClick={()=>upVote(post.id)}>^</Up>
                     <Counter votes={post.votes}>{post.votes}</Counter>
-                    <Down disabled={isLocked} onClick={()=>upVote(post.id)}>v</Down>
+                    <Down disabled={isLocked} onClick={()=>downVote(post.id)}>v</Down>
                 </VoteOption>
             <Content>
                 <HeaderPost>
