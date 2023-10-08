@@ -8,6 +8,7 @@ export const Container = styled.ul`
     flex-direction: row;
     flex-wrap: wrap;
     padding: 1rem;
+    gap: 1rem;
    
 `
 
