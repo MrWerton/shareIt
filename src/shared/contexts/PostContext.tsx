@@ -55,7 +55,7 @@ export function PostContextProvider({ children }: PostContextProviderProps) {
 export const usePost = () => {
     const context = useContext(PostContext);
     if (context === undefined) {
-      throw new Error('useAuth must be used within an AuthProvider');
+      throw new Error('usePost must be used within an AuthProvider');
     }
     return context;
   }
